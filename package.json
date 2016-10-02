@@ -1,0 +1,25 @@
+{
+  "name": "outpost",
+  "version": "1.0.0",
+  "description": "A real time strategy game involving colonists on a survival mission",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack-dev-server --content-base build"
+  },
+  "author": "Daniel Whiffing",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "script-loader": "^0.7.0",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.1"
+  },
+  "dependencies": {
+    "p2": "^0.7.1",
+    "pathfinding": "^0.4.18",
+    "phaser": "^2.6.2"
+  }
+}
