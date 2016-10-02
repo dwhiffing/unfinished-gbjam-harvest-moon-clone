@@ -1,14 +1,14 @@
 let cursors, aKey, wKey, sKey, dKey, spaceKey, marker
 let timerMax = 16
 let timer = 0
-const cameraSpeed = 8
+const speed = 8
 
 export default class Player {
   constructor(game) {
     this.moving = false
     this.game = game
-    this.sprite = game.add.sprite(this.game.width/2, this.game.height/2, 'player')
-    this.sprite.fixedToCamera = true
+    this.sprite = game.add.sprite(121, 119, 'player')
+    // this.sprite.fixedToCamera = true
     this.sprite.anchor.x = 0.5
     this.sprite.anchor.y = 0.5
     this.currentTile = null
@@ -54,19 +54,19 @@ export default class Player {
 
   move() {
     if (this.dir === 2) {
-      this.game.camera.x -= cameraSpeed
+      this.sprite.x -= speed
       this.sprite.frame = this.sprite.frame !== 5 ? 5 : 2
       this.sprite.scale.x = 1
     } else if (this.dir === 4) {
       this.sprite.frame = this.sprite.frame !== 5 ? 5 : 2
       this.sprite.scale.x = -1
-      this.game.camera.x += cameraSpeed
+      this.sprite.x += speed
     } else if (this.dir === 1) {
       this.sprite.frame = this.sprite.frame !== 4 ? 4 : 1
-      this.game.camera.y -= cameraSpeed
+      this.sprite.y -= speed
     } else if (this.dir === 0) {
       this.sprite.frame = this.sprite.frame !== 3 ? 3 : 0
-      this.game.camera.y += cameraSpeed
+      this.sprite.y += speed
     }
     if (this.sprite.frame === 2 || this.sprite.frame === 1 || this.sprite.frame === 0) {
       this.moving = false

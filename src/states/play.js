@@ -12,8 +12,9 @@ export default {
     game.interface = new UserInterface(game, game.tileSize)
     game.player = new Player(game)
 
-    game.camera.x = game.world.width/2 - game.width/2
-    game.camera.y = game.world.height/2 - game.height/2
+    game.camera.x = 0
+    game.camera.y = 0
+    game.camera.follow(game.player.sprite)
   },
 
   update(game) {
