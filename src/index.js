@@ -4,6 +4,13 @@ import Phaser from 'phaser'
 
 window.Phaser = Phaser
 
+const colors = [
+  0x9bbc0f,
+  0x8bac0f,
+  0x306230,
+  0x0f380f,
+]
+
 import BootState from './states/boot'
 import LoadState from './states/load'
 import PlayState from './states/play'
