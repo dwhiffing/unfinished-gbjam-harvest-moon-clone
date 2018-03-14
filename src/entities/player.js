@@ -1,4 +1,4 @@
-let cursors, aKey, wKey, sKey, dKey, spaceKey, marker
+let marker
 let timer = 0
 let moveCount = 0
 let timerMax = 8
@@ -19,13 +19,6 @@ export default class Player {
     this.sprite.anchor.y = 0.5
     this.currentTile = null
 
-    cursors = game.input.keyboard.createCursorKeys()
-    wKey = game.input.keyboard.addKey(Phaser.Keyboard.W)
-    aKey = game.input.keyboard.addKey(Phaser.Keyboard.A)
-    sKey = game.input.keyboard.addKey(Phaser.Keyboard.S)
-    dKey = game.input.keyboard.addKey(Phaser.Keyboard.D)
-    spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR)
-
     marker = game.add.group()
     const markerGraphics = game.add.graphics()
     markerGraphics.lineStyle(2, 0x0f380f, 1)
@@ -33,20 +26,20 @@ export default class Player {
     marker.add(markerGraphics)
   }
 
-  update() {
+  update(game) {
     if (!this.moving) {
-      if (spaceKey.justDown && this.canSlash) {
-        this.slash()
+      if (game.upPressed()) {
+        this.moveTile(1)
+      } else if (game.downPressed()) {
+        this.moveTile(0)
       }
-      if (cursors.left.isDown || aKey.isDown) {
+      if (game.leftPressed()) {
         this.moveTile(2)
-      } else if (cursors.right.isDown || dKey.isDown) {
+      } else if (game.rightPressed()) {
         this.moveTile(3)
       }
-      if (cursors.up.isDown || wKey.isDown) {
-        this.moveTile(1)
-      } else if (cursors.down.isDown || sKey.isDown) {
-        this.moveTile(0)
+      if (game.priPressed() && this.canSlash) {
+        this.slash()
       }
     } else {
       timer--
